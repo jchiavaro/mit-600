@@ -1,3 +1,8 @@
+# Problem Set 1 
+# Name: Jorge Chiavaro 
+# Collaborators: 
+# Time Spent: 0:30
+
 balance = float(raw_input("Enter the outstanding balance on your credit card: "))
 annual_cc_interest = float(raw_input("Enter the annual credit card interest rate as a decimal: "))
 
