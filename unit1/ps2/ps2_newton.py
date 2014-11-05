@@ -40,6 +40,8 @@ def compute_deriv(poly):
     """
     # TO DO ...
     derivative = ()
+    if len(poly) < 2:
+        return (0.0)
     for i in range(1, len(poly)):
         derivative += ((i*poly[i]),)
 
@@ -66,5 +68,17 @@ def compute_root(poly, x_0, epsilon):
     epsilon: float > 0
     returns: tuple (float, int)
     """
-    # TO DO ... 
+    # TO DO ...
+    c = 0
+    x_n = x_0
+    d = compute_deriv(poly)
+    while abs(evaluate_poly(poly, x_n)) >= epsilon:
+        c += 1
+        x_n = (x_n - evaluate_poly(poly, x_n) /evaluate_poly(d, x_n))
 
+    return (x_n, c)
+
+poly = (-13.39, 0.0, 17.5, 3.0, 1.0)
+x_0 = 0.1
+epsilon = .0001
+print compute_root(poly, x_0, epsilon)
