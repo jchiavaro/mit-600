@@ -46,3 +46,45 @@ def choose_word(wordlist):
 wordlist = load_words()
 
 # your code begins here!
+
+def get_partial_word(w, l):
+    result = []
+    for i in range(len(w)):
+        if w[i] == l:
+            result.append(l)
+        else:
+            result.append("-")
+    return result
+
+def update_alphabet(alphabet, letter):
+    res = ""
+    if letter in alphabet:
+        res = alphabet.replace(letter, "")
+    return res
+
+def normalize_string(words):
+    for i in range(len(words)-1):
+        if words[i] == "-":
+            del words[i] 
+          
+    return "".join(words)
+
+aval_letters = "abcdefghijklmnopqrstuvwxyz"
+num_guesses = 8
+word = choose_word(wordlist)
+print("Welcome to the game, Hangman!")
+print("I am thinking of a word that is " + str(len(word)) + " letters long.")
+print("-----------------------------------------------")
+guess = ""
+while(num_guesses > 0):
+    print("You have " + str(num_guesses) + " guesses left.")
+    print("Available letters: ", aval_letters)
+    print("-----------------------------------------------")
+    letter = raw_input("Please guess a letter:")
+    num_guesses -= 1
+    print word
+    words = get_partial_word(word, letter)    
+    guess = normalize_string(words)
+    if guess == word:
+        break
+    aval_letters = update_alphabet(aval_letters, letter)
